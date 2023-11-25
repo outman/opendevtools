@@ -59,3 +59,17 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 ## WARNING:
 *This project only involves storage configuration and historical sessions in the chatGPT UI Client section. All data is stored in local localStorage and IndexedDB, not saved on the server side.*
+
+
+## PROXY 
+Developers located in regions where chatGPT access is not available need to address the issue of local proxies in order to access the API. They should configure the HTTP_PROXY in the env settings and modify the comments within the src/app/api/openai/route.js file.
+
+```javascript
+// -掉注释
+// import { HttpsProxyAgent } from "https-proxy-agent";
+// httpAgent: new HttpsProxyAgent(process.env.HTTP_PROXY),
+// httpsAgent: new HttpsProxyAgent(process.env.HTTP_PROXY),
+
+// +注释掉
+export const runtime = 'edge';
+```

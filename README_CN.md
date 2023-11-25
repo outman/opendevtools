@@ -58,3 +58,14 @@ ACCESSTOKEN=''          # 服务端认真 token
 
 ## 说明
 > 本项目只有在 chatGPT UI Client 部分涉及存储配置和历史会话，数据均存储在本地的 localStorage 和 IndexedDB 内，不会存储到服务器端。
+
+### 未开放 chatGPT 访问的地区开发者需要处理本地代理的问题，否则无法访问 API，env 配置 HTTP_PROXY，之后将 src/app/api/openai/route.js 文件内的 
+```javascript
+// -掉注释
+// import { HttpsProxyAgent } from "https-proxy-agent";
+// httpAgent: new HttpsProxyAgent(process.env.HTTP_PROXY),
+// httpsAgent: new HttpsProxyAgent(process.env.HTTP_PROXY),
+
+// +注释掉
+export const runtime = 'edge';
+```
